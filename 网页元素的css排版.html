@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/* 标准流排版开始 */
+			* {
+				margin: 0px;
+				position: relative;
+			}
+
+			h2 {
+				margin: 20px;
+			}
+
+			.box1 {
+				border: 2px solid cyan;
+				width: 120px;
+				height: 80px;
+				text-align: center;
+				line-height: 4;
+				margin: 0px 0px 20px 40px;
+				/* 上左下右 */
+			}
+
+			.box2 {
+				border: solid;
+				margin-left: 10px;
+			}
+
+			span {
+				border: solid;
+			}
+
+			.box3 {
+				width: 100px;
+				height: 100px;
+			}
+
+			.box4 {
+				margin: 100px 0px 100px 0px;
+			}
+
+			.box5 {
+				display: inline-block;
+				width: 130px;
+				height: 130px;
+				margin: 20px;
+				padding: 10px;
+			}
+
+			.box6 {
+				width: 210px;
+				height: 20px;
+				display: block;
+			}
+
+			/* 标准流排版结束 */
+
+			/* 浮动排版开始 */
+			.father {
+				width: 600px;
+				margin: 30px;
+				border: 2px dotted;
+			}
+
+			.box7 {
+				margin: 10px;
+				background-color: azure;
+			}
+
+			.father1 {
+				height: 140px;
+				width: 100%;
+				background-color: greenyellow;
+			}
+
+			.box8 {
+				margin-right: 20px;
+				margin-left: 20px;
+				float: left;
+				border: solid;
+				background-color: bisque;
+			}
+
+			.box9 {
+				color: blue;
+				cursor: default;
+			}
+
+			.box9:hover {
+				/* 清除了上一个的float中的所存在属性影响 */
+				clear: both;
+				cursor: default;
+			}
+
+			.father2 {
+				margin: 10px;
+				height: 60px;
+				width: 100%;
+			}
+
+			.box10 {
+				/* float属性自动块级元素化 */
+				float: right;
+				margin: 20px;
+				border: double;
+				background-color: bisque;
+				text-align: center;
+			}
+
+			.box11 {
+				clear: both;
+				height: 0px;
+			}
+
+			/* 浮动排版结束 */
+
+			/* 定位排版开始 */
+			.father3 {
+				margin: 20px;
+				background: salmon;
+				width: 500px;
+				height: 200px;
+			}
+
+			.box12 {
+				/* position: static; */
+				width: 200px;
+				height: 20px;
+				padding: 10px;
+				margin: 10px;
+				border: 2px solid black;
+			}
+
+			.box13 {
+				/* 此相对水平方向最近的为father3 */
+				position: relative;
+				width: 300px;
+				height: 20px;
+				border: 2px solid white;
+				left: 20px;
+			}
+
+			.box14 {
+				/* 此相对水平方向最近的为father3，垂直方向shidiv13*/
+				position: relative;
+				width: 300px;
+				height: 20px;
+				border: 2px solid powderblue;
+				left: 90px;
+				top: 40px;
+			}
+
+			.box15 {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				height: 90px;
+				width: 200px;
+				background-color: aquamarine;
+			}
+
+			.box16 {
+				position: fixed;
+				left: 0px;
+				top: 40px;
+				height: 90px;
+				width: 45px;
+				background: skyblue;
+			}
+
+			/* 定位排版结束 */
+		</style>
+	</head>
+	<body>
+		<h1>标准流排版</h1>
+		<h2>块级元素默认垂直排列</h2>
+		<div class="box1">第一个div</div>
+		<div class="box2">第二个div(未设置宽高)</div>
+
+		<h2>块级元素默认垂直排列</h2>
+		<span class="box3">第一个span(设置宽高无效)</span>
+		<span class="box4">第二个span(设置上下边距无效)</span>
+		<span class="box5">第三个span<br>(改变为行内块级元素)</span>
+		<span class="box6">第四个span(改变为块级元素)</span><br>
+		<hr><br><br>
+
+		<h1>浮动排版</h1>
+		<div class="father">
+			<div class="box7">
+				标准流的排版
+			</div>
+			<div class="father1">
+				<div class="box8">向左浮动</div>
+				标准流的排版中的浮动排版
+				<div class="box9">触碰清除向右浮动</div>
+			</div>
+			<div class="father2">
+				标准流的排版中的浮动流排版同上
+				<span class="box10">向右浮动<br>(行内属性自动块级元素化)</span>
+			</div>
+			<div class="box11">
+				可以在父元素中间添加一个高度为0的元素，从而清除左右的浮动元素
+			</div>
+		</div><br>
+		<hr><br><br>
+
+		<h1>定位排版</h1>
+		<div class="father3">
+			<div class="box12">
+				div12静态定位：正常显示
+			</div>
+			<div class="box13">
+				div13相对定位：相对于正常位置向右偏移
+			</div>
+			<div class="box14">
+				div14绝对定位，相对于div13向右偏移
+			</div>
+		</div>
+		<div class="box15">
+			div15绝对定位(相对于页面,脱离了文档流,且不保留原先的空间，生成一个新的块级元素)
+		</div>
+		<div class="box16">
+			div16固定定位
+		</div>
+	</body>
+</html>
